@@ -23,8 +23,8 @@ public:
 		{
 			if(visited.find(rooms[x][i]) == visited.end())
 			{
-				visited.insert(i);
-				DFS(rooms, i);
+				visited.insert(rooms[x][i]);
+				DFS(rooms, rooms[x][i]);
 			}
 		}
 	}
