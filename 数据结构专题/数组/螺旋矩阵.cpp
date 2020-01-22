@@ -30,12 +30,12 @@ public:
         	}
         	for(int i = 0; i < m - 1 - level; i++)
         	{
-        		res[pos] = matrix[level][i];
+        		res[pos] = matrix[n-1][i];
         		pos++;
         	}
         	for(int i = 0; i < n - 1 - level; i++)
         	{
-        		res[pos] = matrix[level][i];
+        		res[pos] = matrix[m-1][n - i];
         		pos++;
         	}
         	for(int i = 0; i < n - 1 - level; i++)
