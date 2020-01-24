@@ -8,6 +8,8 @@
 using namespace std;
 
 class Solution {
+
+    
 public:
 
     vector<int> getPrefix(string needle){
@@ -45,9 +47,6 @@ public:
 
         vector<int> prefix = getPrefix(needle);
 
-        // cout << prefix[0] << endl;
-        // cout << prefix[1] << endl;
-
         int i = 0;
         int j = 0;
         int m = haystack.size();
@@ -55,9 +54,6 @@ public:
 
         while(i < m)
         {
-            if(j == n - 1 && haystack[i] == needle[j])
-                return i - j;
-
             if(haystack[i] == needle[j])
             {
                 i++;
@@ -73,8 +69,8 @@ public:
                 }
             }
 
-            // if(j == n)
-            //     return i - j;
+            if(j == n)
+                return i - j;
         }
 
         return -1;
