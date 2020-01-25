@@ -9,8 +9,13 @@ using namespace std;
 
 class Solution {
 public:
-    int minSubArrayLen(int s, vector<int>& nums) {
 
+    int minSubArrayLen(int s, vector<int>& nums) {
+        return minSubArrayLen2(s, nums);
+    }
+
+    int minSubArrayLen1(int s, vector<int>& nums) {
+        // 暴力法
         int minLen = nums.size()+1;
 
         for(int i = 0; i < nums.size(); i++)
@@ -36,10 +41,36 @@ public:
             return minLen;
         return 0;
     }
+
+    int minSubArrayLen2(int s, vector<int>& nums) {
+        // 双指针
+
+        int i = 0, j = 0, sum = 0, minLen = nums.size()+1;
+        while(i < nums.size() && j <= nums.size())
+        {
+            while(sum < s && j < nums.size())
+            {
+                sum += nums[j];
+                j++;
+            }
+
+            if(sum >= s && j - i < minLen)
+                minLen = j - i;
+
+            sum -= nums[i];
+            i++;
+
+            if(sum >= s && j - i < minLen)
+                minLen = j - i;
+        }
+
+        return minLen <= nums.size() ? minLen : 0;
+    }
 };
 
 int main()
 {
-
+    vector<int> vec = {1, 2, 3, 4, 5};
+    cout << Solution().minSubArrayLen(11, vec) << endl;
     return 0;
 }
