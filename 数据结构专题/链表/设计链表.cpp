@@ -156,7 +156,7 @@ int main()
     linkedList->show();
     linkedList->addAtIndex(1, 2);  // 1 2 3
     linkedList->show();
-    cout << "get 1: " << linkedList->get(1) << endl;        // 1 2 3  //返回1
+    cout << "get 1: " << linkedList->get(1) << endl;        // 1 2 3  //返回2
     linkedList->deleteAtIndex(0);  // 2 3
     linkedList->show();
     cout << "get 0: " << linkedList->get(0) << endl;        // 2 3    //返回2
