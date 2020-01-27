@@ -97,17 +97,33 @@ public:
         if(index == 0){
             head = head->next;
             delete p;
+            return;
         }
 
-        Node* q = p->next;
-        while(q && index--){
-        	p = p->next;
-        	q = q->next;
+        while(p->next && --index){
+            p = p->next;
         }
-        if(q){
+
+        if(p->next == NULL){
+
+        }else{
+            Node* q = p->next;
             p->next = q->next;
             delete q;
         }
+
+
+        // Node* q = p->next;
+        // while(q && --index){
+        // 	p = p->next;
+        // 	q = q->next;
+        // }
+        // if(q){
+        //     p->next = q->next;
+        //     delete q;
+        // }else{
+
+        // }
     }
 
     void show(){
@@ -141,11 +157,9 @@ int main()
     linkedList->addAtIndex(1, 2);  // 1 2 3
     linkedList->show();
     cout << "get 1: " << linkedList->get(1) << endl;        // 1 2 3  //返回1
-    linkedList->show();
     linkedList->deleteAtIndex(0);  // 2 3
     linkedList->show();
     cout << "get 0: " << linkedList->get(0) << endl;        // 2 3    //返回2
-    linkedList->show();
 
     // linkedList->addAtHead(7); // 7
     // linkedList->show();
@@ -162,12 +176,34 @@ int main()
     // linkedList->addAtTail(4); // 6 1 2 0 4
     // linkedList->show();
     // cout << "get 4: " << linkedList->get(4) << endl;        // 6 1 2 0 4    //返回4
-    // linkedList->show();
     // linkedList->addAtHead(4);// 4 6 1 2 0 4 
     // linkedList->show();
     // linkedList->addAtIndex(5, 0);   // 4 6 1 2 0 0 4 
     // linkedList->show();
     // linkedList->addAtHead(6); // 6 4 6 1 2 0 0 4 
+    // linkedList->show();
+
+
+    // linkedList->addAtHead(2); // 2
+    // linkedList->show();
+    // linkedList->deleteAtIndex(1);  // 2
+    // linkedList->show();
+    // linkedList->addAtHead(2); // 2 2
+    // linkedList->show();
+    // linkedList->addAtHead(7); // 7 2 2
+    // linkedList->show();
+    // linkedList->addAtHead(3); // 3 7 2 2
+    // linkedList->show();
+    // linkedList->addAtHead(2); // 2 3 7 2 2
+    // linkedList->show();
+    // linkedList->addAtHead(5); // 5 2 3 7 2 2
+    // linkedList->show();
+    // linkedList->addAtTail(5); // 5 2 3 7 2 2 5
+    // linkedList->show();
+    // cout << "get 5: " << linkedList->get(5) << endl;           //返回2
+    // linkedList->deleteAtIndex(6);  // 5 2 3 7 2 2
+    // linkedList->show();
+    // linkedList->deleteAtIndex(4);  // 5 2 3 7 2
     // linkedList->show();
 
 	return 0;
