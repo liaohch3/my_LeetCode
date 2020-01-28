@@ -14,12 +14,12 @@ struct ListNode {
 };
 
 void show(ListNode* head){
-	ListNode* p = head;
-	while(p){
-		cout << p->val << " ";
-		p = p->next;
-	}
-	cout << endl;
+    ListNode* p = head;
+    while(p){
+        cout << p->val << " ";
+        p = p->next;
+    }
+    cout << endl;
 }
 
 class Solution {
@@ -27,13 +27,13 @@ public:
 
     ListNode* rotateRight(ListNode* head, int k) {
         
-    	if(head==NULL || head->next==NULL)	return head;
+        if(head==NULL || head->next==NULL)  return head;
 
         ListNode* p = head;
         int len = 1;
         while(p->next){
-        	p = p->next;
-        	len++;
+            p = p->next;
+            len++;
         }
         p->next = head;
 
@@ -41,7 +41,7 @@ public:
         k %= len;
         int step = len - k - 1;
         while(step--){
-        	p = p->next;
+            p = p->next;
         } 
 
         ListNode* q = p->next;
@@ -53,14 +53,14 @@ public:
 
 int main()
 {
-	ListNode* head = new ListNode(1);
-	ListNode* p = head;
-	p->next = new ListNode(2);
-	p = p->next;
-	p->next = new ListNode(3);
-	p = p->next;
+    ListNode* head = new ListNode(1);
+    ListNode* p = head;
+    p->next = new ListNode(2);
+    p = p->next;
+    p->next = new ListNode(3);
+    p = p->next;
 
-	Solution().rotateRight(head, 4);
+    Solution().rotateRight(head, 4);
 
-	return 0;
+    return 0;
 }
