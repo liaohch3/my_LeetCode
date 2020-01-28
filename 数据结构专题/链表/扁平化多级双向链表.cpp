@@ -7,32 +7,47 @@
 
 using namespace std;
 
-struct ListNode {
+// Definition for a Node.
+class Node {
+public:
     int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+    Node* prev;
+    Node* next;
+    Node* child;
 };
 
-void show(ListNode* head){
-	ListNode* p = head;
-	while(p){
-		cout << p->val << " ";
-		p = p->next;
-	}
-	cout << endl;
-}
+class Solution {
+public:
+    Node* flatten(Node* head) {
+    	if(head == NULL)	return head;
+
+    	Node* p = head;
+    	while(p){
+
+    		if(p->child != NULL){
+    			Node* q = p->child;
+    			Node* m = p->next;
+
+    			p->next = q;
+    			q->prev = p;
+    			p->child = NULL;
+
+    			while(q->next){
+    				q = q->next;
+    			}
+    			q->next = m;
+    			if(m)
+	    			m->prev = q;
+    		}
+
+    		p = p->next;
+    	}
+
+    	return head;
+    }
+};
 
 int main()
 {
-	ListNode* head = new ListNode(1);
-	ListNode* p = head;
-	p->next = new ListNode(2);
-	p = p->next;
-	p->next = new ListNode(3);
-	p = p->next;
-	p->next = new ListNode(4);
-	p = p->next;
-	p->next = new ListNode(5);
-
 	return 0;
 }
