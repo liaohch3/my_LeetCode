@@ -16,11 +16,13 @@ public:
         for(int i = 0; i < nums.size(); i++){
         	if(hashMap.find(nums[i]) == hashMap.end())
         		hashMap[nums[i]] = i;
-        	else if(i - hashMap[nums[i]] > maxDist)
-        		maxDist = i - hashMap[nums[i]];
+        	else if(i - hashMap[nums[i]] <= k)
+        		return true;
+        	else
+        		hashMap[nums[i]] = i;
         }
 
-        return maxDist == k;
+        return false;
     }
 };
 
