@@ -35,7 +35,7 @@ int main()
 		if(check(i)){
 			a++;
 		}else{
-			cout << "a: " << i << endl;
+			// cout << "a: " << i << endl;
 			count++;
 			if(count == n)
 				break;
@@ -45,7 +45,7 @@ int main()
 		if(check(i)){
 			b++;
 		}else{
-			cout << "b: " << i << endl;
+			// cout << "b: " << i << endl;
 			count++;
 			if(count == n)
 				break;
@@ -55,7 +55,7 @@ int main()
 		if(check(i)){
 			c++;
 		}else{
-			cout << "c: " << i << endl;
+			// cout << "c: " << i << endl;
 			count++;
 			if(count == n)
 				break;
@@ -65,7 +65,7 @@ int main()
 		if(check(i)){
 			d++;
 		}else{
-			cout << "d: " << i << endl;
+			// cout << "d: " << i << endl;
 			count++;
 			if(count == n)
 				break;
