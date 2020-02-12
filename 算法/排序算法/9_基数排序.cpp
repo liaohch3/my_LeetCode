@@ -1,8 +1,8 @@
 /*
 * @Author: liaohch3
-* @Date:   2020-02-11 20:44:55
+* @Date:   2020-02-12 11:41:39
 * @Last Modified by:   liaohch3
-* @Last Modified time: 2020-02-12 10:58:29
+* @Last Modified time: 2020-02-12 12:36:55
 */
 
 #include <iostream>
@@ -45,34 +45,43 @@ bool check(vector<int>& arr){
 	return true;
 }
 
-int get_index(vector<int>& arr, int left, int right){
-	int pivot = arr[left];
-	while(left < right){
-		while(left < right && arr[right] >= pivot) 
-			right--;
-		arr[left] = arr[right];
-
-		while(left < right && arr[left] <= pivot) 
-			left++;
-		arr[right] = arr[left];
-	}
-
-	// 此时left==right
-	arr[left] = pivot;
-	return left;
-}
-
-void quick_sort(vector<int>& arr, int left, int right){
-	if(left < right){
-		int index = get_index(arr, left, right);
-		quick_sort(arr, left, index - 1);
-		quick_sort(arr, index + 1, right);
-	}
-}
-
 void sort(vector<int>& arr){
+	
 	if(arr.size() <= 1)	return;
-	quick_sort(arr, 0, arr.size() - 1);
+
+	int max = 1;
+
+	for(int i = 0; i < arr.size(); i++){
+		int now = arr[i];
+		int round = 0;
+		while(now){
+			now /= 10;
+			round++;
+		}
+
+		max = round > max ? round : max;
+	}
+
+	vector<vector<int> > bucket(10); 
+
+	for(int i = 0; i < max; i++){
+		int mod = 1;
+		for(int j = 0; j < i; j++){
+			mod *= 10;
+		}
+
+		for(int j = 0; j < arr.size(); j++){
+			bucket[(arr[j] / mod) % 10].push_back(arr[j]);
+		}
+		int k = 0;
+		for(int j = 0; j < 10; j++){
+			for(int m = 0; m < bucket[j].size(); m++){
+				arr[k] = bucket[j][m];
+				k++;
+			}
+			bucket[j].clear();
+		}
+	}
 }
 
 int main()

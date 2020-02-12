@@ -1,8 +1,8 @@
 /*
 * @Author: liaohch3
-* @Date:   2020-02-11 20:44:55
+* @Date:   2020-02-12 10:58:57
 * @Last Modified by:   liaohch3
-* @Last Modified time: 2020-02-12 10:58:29
+* @Last Modified time: 2020-02-12 11:20:34
 */
 
 #include <iostream>
@@ -45,34 +45,40 @@ bool check(vector<int>& arr){
 	return true;
 }
 
-int get_index(vector<int>& arr, int left, int right){
-	int pivot = arr[left];
-	while(left < right){
-		while(left < right && arr[right] >= pivot) 
-			right--;
-		arr[left] = arr[right];
+void heapify(vector<int>& arr, int n, int i){
 
-		while(left < right && arr[left] <= pivot) 
-			left++;
-		arr[right] = arr[left];
+	if(i >= n)	return;
+
+	int l = 2 * i + 1;
+	int r = 2 * i + 2;
+	int max = i;
+
+	if(l < n && arr[l] > arr[max]){
+		max = l;
+	}
+	if(r < n && arr[r] > arr[max]){
+		max = r;
+	}
+	if(max != i){
+		swap(arr[max], arr[i]);
+		heapify(arr, n, max);
 	}
 
-	// 此时left==right
-	arr[left] = pivot;
-	return left;
-}
-
-void quick_sort(vector<int>& arr, int left, int right){
-	if(left < right){
-		int index = get_index(arr, left, right);
-		quick_sort(arr, left, index - 1);
-		quick_sort(arr, index + 1, right);
-	}
 }
 
 void sort(vector<int>& arr){
 	if(arr.size() <= 1)	return;
-	quick_sort(arr, 0, arr.size() - 1);
+
+	int last_node = arr.size() - 1;
+	int parent = (last_node - 1) / 2;
+	for(int i = parent; i >= 0; i--){
+		heapify(arr, arr.size(), i);
+	}
+
+	for(int i = arr.size() - 1; i >= 0; i--){
+		swap(arr[0], arr[i]);
+		heapify(arr, i, 0);
+	}
 }
 
 int main()
