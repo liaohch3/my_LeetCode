@@ -2,7 +2,7 @@
 * @Author: liaohch3
 * @Date:   2020-02-18 18:33:51
 * @Last Modified by:   liaohch3
-* @Last Modified time: 2020-02-18 18:42:00
+* @Last Modified time: 2020-02-18 22:45:22
 */
 
 #include <iostream>
@@ -21,7 +21,7 @@ using namespace std;
 class Solution {
 public:
 	int findRepeatNumber(vector<int>& nums) {
-        return findRepeatNumber2(nums);
+        return findRepeatNumber1(nums);
     }
 
 	void swap(int& a, int& b){
@@ -59,6 +59,7 @@ public:
 
 int main()
 {
-    
+    vector<int> nums = {0, 1, 2, 0, 4, 5, 6, 7, 8, 9};
+    cout << Solution().findRepeatNumber(nums) << endl;
     return 0;
 }
