@@ -2,7 +2,7 @@
 * @Author: liaohch3
 * @Date:   2020-02-14 21:52:39
 * @Last Modified by:   liaohch3
-* @Last Modified time: 2020-02-14 21:56:00
+* @Last Modified time: 2020-02-14 21:58:45
 */
 
 #include <iostream>
@@ -23,11 +23,11 @@ bool isBadVersion(int version);
 class Solution {
 public:
     int firstBadVersion(int n) {
-    	int i = 1;
-    	int j = n;
+    	long long i = 1;
+    	long long j = n;
 
     	while(i < j){
-    		int mid = i + (j - i) / 2;
+    		long long mid = i + (j - i) / 2;
     		if(isBadVersion(mid)){
     			j = mid;
     		}else{
