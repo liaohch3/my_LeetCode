@@ -2,7 +2,7 @@
 * @Author: liaohch3
 * @Date:   2020-02-22 18:43:42
 * @Last Modified by:   liaohch3
-* @Last Modified time: 2020-02-22 19:09:34
+* @Last Modified time: 2020-02-22 23:03:53
 */
 
 #include <iostream>
@@ -43,7 +43,6 @@ public:
 
     	// 异常处理
     	if(n < 0)	invalidInput = 1;
-
     	string str(n, '0');
     	plusMySting(str, n);
     	cout << str << endl;
