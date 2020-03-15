@@ -1,10 +1,10 @@
 # LeetCode代码仓库
 
-这是我刷LeetCode的代码仓库，上传到Github以供激励。
+这是我刷LeetCode的代码仓库，上传到Github以激励自己。
 
 
 
-有问题欢迎提issues。
+有问题欢迎提issues给我。
 
 
 
