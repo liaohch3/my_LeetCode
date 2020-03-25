@@ -2,7 +2,7 @@
 * @Author: liaohch3
 * @Date:   2020-03-23 18:38:59
 * @Last Modified by:   liaohch3
-* @Last Modified time: 2020-03-23 18:56:05
+* @Last Modified time: 2020-03-23 23:46:12
 */
 
 #include <iostream>
@@ -23,23 +23,16 @@
 using namespace std;
 
 class Solution {
-	bool legal(const int& a, const int& b, const int& c){
-		if(a + b <= c)	return false;
-		if(a + c <= b)	return false;
-		if(b + c <= a)	return false;
-		return true;
-	}
 public:
     int largestPerimeter(vector<int>& A) {
     	sort(A.begin(), A.end());
+        for(int i = A.size() - 3; i >= 0; i--){
+            if(A[i] + A[i+1] > A[i+2]){
+                return A[i] + A[i+1] + A[i+2];
+            }
+        }
 
-    	int i = 0;
-    	int j = A.size() - 1;
-    	int res = 0;
-    	while(i < j){
-    		
-    	}
-
+        return 0;
     }
 };
 
